@@ -30,21 +30,25 @@ const PORT = process.env.PORT;
 // app.get() specifies the route that the server should listen for
 // query parameters are used to send extra information to the backend
 app.get('/weather', (request, response) => {
-  let lat = request.query.lat;
-  let lon = request.query.lat;
+  let lat = parseInt(request.query.lat);
+  let lon = parseInt(request.query.lat);
   let searchQuery = request.query.city;
-  let answer = weatherData.filter(city => city.city_name.includes(searchQuery));
-  let forecastArray = weatherData[0].data.map(day =>{
-    return new Forecast (day.valid_date, day.weather.description);
-  });
-  let weatherDataObject = {
-    answer: answer,
-    forecastArray: forecastArray,
-  };
-  console.log(weatherDataObject);
-  response.send(weatherDataObject);
+  weatherData.find(city => city.city_name.includes(searchQuery));
+
+  let forecastArray = [];
+
+  if (searchQuery) {
+    forecastArray.push(weatherData[0].data.map(day => new Forecast(`Low of ${day.low_temp}, a high of ${day.high_temp} with ${day.weather.description}. date: ${day.valid_date}`)));
+    response.send(forecastArray);
+  } else {
+    response.status(404).send('Could not find the requested city. Please try again.');
+  }
+
+
 });
 
-
+app.get('/*', (request, response) => {
+  response.status(500).send('Path does not exist');
+});
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
