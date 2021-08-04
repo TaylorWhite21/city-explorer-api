@@ -5,7 +5,12 @@ console.log('Hello World');
 // Creating express server requirement
 const express = require('express');
 const cors = require('cors');
+const app = express();
+app.use(cors());
 
+require('dotenv').config();
+
+const PORT = process.env.PORT;
 // Collects data from requested file
 let weatherData = require('./data/weather.json');
 
@@ -15,17 +20,6 @@ class Forecast {
     this.desc = desc;
   }
 }
-
-
-
-
-
-const app = express();
-app.use(cors());
-
-require('dotenv').config();
-
-const PORT = process.env.PORT;
 
 // app.get() specifies the route that the server should listen for
 // query parameters are used to send extra information to the backend
@@ -43,8 +37,6 @@ app.get('/weather', (request, response) => {
   } else {
     response.status(404).send('Could not find the requested city. Please try again.');
   }
-
-
 });
 
 app.get('/*', (request, response) => {
