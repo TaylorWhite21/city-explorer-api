@@ -1,21 +1,26 @@
-# city-explorer-api
+# City Explorer API Server
 
-**Author**: Taylor White
+**Author**: Taylor White  
 **Version**: 1.0.0
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+This app was designed to take any valid city name and return the name, latitide, longitude, and map area of the reauested city.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+
+#### Setting up the .env file
+
+1. Create file called '.env'
+2. In .env, create a variable named *PORT=*
+3. Place local port that is being used.
+
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-
-## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+React  
+React-boostrap  
+LocationIQ-API  
+CSS  
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+[LocationIQ](https://locationiq.com/docs)
+[UML](https://drive.google.com/file/d/1dKorR6TiiY-5oosEViZm8Wr3AfR-sUMU/view?usp=sharing)
