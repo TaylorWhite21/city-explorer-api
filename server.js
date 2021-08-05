@@ -29,10 +29,8 @@ app.get('/weather', (request, response) => {
   let searchQuery = request.query.city;
   weatherData.find(city => city.city_name.includes(searchQuery));
 
-  let forecastArray = [];
-
   if (searchQuery) {
-    forecastArray.push(weatherData[0].data.map(day => new Forecast(`Low of ${day.low_temp}, a high of ${day.high_temp} with ${day.weather.description}. date: ${day.valid_date}`)));
+    let forecastArray = weatherData[0].data.map(day => new Forecast(`Low of ${day.low_temp}, a high of ${day.high_temp} with ${day.weather.description}. date: ${day.valid_date}`));
     response.send(forecastArray);
   } else {
     response.status(404).send('Could not find the requested city. Please try again.');
