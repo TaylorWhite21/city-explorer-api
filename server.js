@@ -37,7 +37,7 @@ app.get('/weather', async (request, response) => {
   let lat = parseInt(request.query.lat);
   let lon = parseInt(request.query.lat);
   let searchQuery = request.query.city;
-  let weatherResults = await axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${process.env.WEATHER_API_KEY}`)
+  let weatherResults = await axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${process.env.WEATHER_API_KEY}&days=3`)
   let weatherArray = [];
 
   if (weatherResults) {
