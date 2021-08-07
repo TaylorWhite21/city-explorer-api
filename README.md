@@ -11,9 +11,12 @@ This app was designed to take any valid city name and return the name, latitide,
 #### Setting up the .env file
 
 1. Create file called '.env'
-2. In .env, create a variable named *PORT=*
-3. Place local port that is being used.
-
+2. In .env, create the following variable names:
+    - *Port=*
+    - *WEATHER_API_KEY=*
+    - *MOVIE_API_KEY=*
+    *Note*: You can also reference and edit the sample.env file.
+3. Copy API key from the [*WEATHER*](https://www.weatherbit.io) and [*MOVIE*](https://www.themoviedb.org/documentation/api) API sites and paste to  the end of the corresponding variable.
 
 ## Architecture
 React  
