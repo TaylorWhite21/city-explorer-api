@@ -6,6 +6,8 @@
 ## Overview
 This app was designed to take any valid city name and return the name, latitide, longitude, and map area of the reauested city.
 
+### [Heroku](https://city-explorer-tw.herokuapp.com)
+
 ## Getting Started
 
 #### Setting up the .env file
@@ -25,5 +27,6 @@ LocationIQ-API
 CSS  
 
 ## Credit and Collaborations
+[Charlie Fadness](https://github.com/fadnesscharlie) - Code Review
 [LocationIQ](https://locationiq.com/docs)
 [UML](https://drive.google.com/file/d/1dKorR6TiiY-5oosEViZm8Wr3AfR-sUMU/view?usp=sharing)
