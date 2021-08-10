@@ -6,6 +6,8 @@
 ## Overview
 This app was designed to take any valid city name and return the name, latitide, longitude, and map area of the reauested city.
 
+### [Heroku](https://city-explorer-tw.herokuapp.com)
+
 ## Getting Started
 
 #### Setting up the .env file
