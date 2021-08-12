@@ -1,28 +1,39 @@
 'use strict';
 
-// Creating express server requirement
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
 app.use(cors());
-const axios = require('axios');
-// Above is what is needed to start an express server
 
-const weather = require('./modules/Weather.js')
-const movie = require('./modules/Movie.js')
-
-require('dotenv').config();
 const PORT = process.env.PORT;
 
-// calls to the weather module
-app.get('/weather', weather);
+const weather = require('./Weather.js');
+const movie = require('./Movies.js');
 
-// calls to the movie module
-app.get('/movies', movie);
+app.get('/weather', weatherHandler);
 
-// Returns error if path is not found
-app.get('/*', (request, response) => {
-  response.status(404).send('Path does not exist');
-});
+function weatherHandler(request, response) {
+  let lat = parseInt(request.query.lat);
+  let lon = parseInt(request.query.lat);
+  weather(lat, lon)
+    .then(summaries => response.send(summaries))
+    .catch((error) => {
+      console.error(error);
+      response.status(200).send('Sorry. Something went wrong!')
+    });
+}
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.get('/movies', movieHandler);
+
+function movieHandler(request, response) {
+  let cityName = request.query.city;
+  movie(cityName)
+    .then(summaries => response.send(summaries))
+    .catch((error) => {
+      console.error(error);
+      response.status(200).send('Sorry. Something went wrong!')
+    });
+}
+
+app.listen(PORT, () => console.log(`Server up on ${PORT}`));
