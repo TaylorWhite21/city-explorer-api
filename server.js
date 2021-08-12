@@ -8,6 +8,7 @@ app.use(cors());
 const PORT = process.env.PORT;
 
 const weather = require('./Weather.js');
+const movie = require('./Movies.js');
 
 app.get('/weather', weatherHandler);
 
@@ -15,6 +16,18 @@ function weatherHandler(request, response) {
   let lat = parseInt(request.query.lat);
   let lon = parseInt(request.query.lat);
   weather(lat, lon)
+    .then(summaries => response.send(summaries))
+    .catch((error) => {
+      console.error(error);
+      response.status(200).send('Sorry. Something went wrong!')
+    });
+}
+
+app.get('/movies', movieHandler);
+
+function movieHandler(request, response) {
+  let cityName = request.query.city;
+  movie(cityName)
     .then(summaries => response.send(summaries))
     .catch((error) => {
       console.error(error);
